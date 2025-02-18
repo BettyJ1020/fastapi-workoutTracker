@@ -1,0 +1,49 @@
+# 🔹 忽略日誌檔案
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 🔹 忽略 Python 暫存檔案與資料夾
+__pycache__/
+*.pyc
+*.pyo
+*.db
+
+# 🔹 忽略環境設定檔（確保機密資訊不會上傳）
+.env
+
+# 🔹 忽略 Python 虛擬環境
+venv/
+
+# 🔹 忽略 Heroku 產生的 Python Buildpacks
+.python-version
+.venv/
+
+# 🔹 忽略 FastAPI 部署時可能產生的 Cache
+*.pytest_cache/
+*.mypy_cache/
+*.cache/
+
+# 🔹 忽略 Docker 相關暫存檔（若你有使用 Docker）
+.dockerignore
+docker-compose.override.yml
+
+# 🔹 忽略 VSCode、IDE 相關的設定檔
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 🔹 若專案內有 `node_modules`（前端部分），則可忽略
+node_modules/
+dist/
+dist-ssr/
+*.local
