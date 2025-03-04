@@ -23,6 +23,7 @@ app.add_middleware(
     allow_headers=["*"],  # 允許所有標頭
 )
 
+
 # 依賴：獲取資料庫會話
 def get_db():
     db = SessionLocal()
@@ -55,6 +56,10 @@ class LoginResponse(BaseModel):
     message: str
     userId: int
     username: str
+
+@app.get("/")
+async def root():
+    return {"message": "fastapi - workout tracker"}
 
 # 獲取用戶的 todos
 @app.get("/todos/", response_model=List[TodoResponse])
