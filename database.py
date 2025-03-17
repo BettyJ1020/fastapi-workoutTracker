@@ -6,8 +6,11 @@ from sqlalchemy.exc import IntegrityError
 # 讀取環境變數 DATABASE_URL（如果不存在則回退到 SQLite，方便本地測試）
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./workout.db")
 
-
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# 如果使用 SQLite，才需要 `check_same_thread`
+if DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+else:
+    engine = create_engine(DATABASE_URL)  # 移除 `check_same_thread`
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
