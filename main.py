@@ -61,6 +61,21 @@ class LoginResponse(BaseModel):
 async def root():
     return {"message": "fastapi - workout tracker"}
 
+# 測試 API 是否成功連接資料庫
+@app.get("/debug/db-connection")
+def test_db_connection(db: Session = Depends(get_db)):
+    try:
+        # 測試查詢 `users` 表內是否有數據
+        users_count = db.query(User).count()
+        todos_count = db.query(TodoItem).count()
+        return {
+            "status": "✅ Database connected successfully!",
+            "users_count": users_count,
+            "todos_count": todos_count,
+        }
+    except Exception as e:
+        return {"status": "❌ Failed to connect to database", "error": str(e)}
+
 # 獲取用戶的 todos
 @app.get("/todos/", response_model=List[TodoResponse])
 def get_todos(user_id: int = Query(...), db: Session = Depends(get_db)):

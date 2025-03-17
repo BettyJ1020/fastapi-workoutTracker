@@ -1,8 +1,11 @@
+import os
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, Session, relationship
 from sqlalchemy.exc import IntegrityError
 
-DATABASE_URL = "sqlite:///./workout.db"
+# 讀取環境變數 DATABASE_URL（如果不存在則回退到 SQLite，方便本地測試）
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./workout.db")
+
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
