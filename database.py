@@ -19,7 +19,7 @@ class TodoItem(Base):
     id = Column(Integer, primary_key=True, index=True)
     part = Column(String, index=True)  # Body part (e.g., Glute1, Breast)
     content = Column(String, index=True)  # Action content
-    isCompleted = Column(Boolean, default=False)  # Completion status
+    is_completed = Column(Boolean, default=False)  # Completion status
     user_id = Column(Integer, ForeignKey("users.id"))  # 新增 user_id 欄位，設置外鍵
 
     # 定義關聯
