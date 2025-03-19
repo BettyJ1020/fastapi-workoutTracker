@@ -12,6 +12,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.db
+migrate_data.py
 
 # 🔹 忽略環境設定檔（確保機密資訊不會上傳）
 .env
