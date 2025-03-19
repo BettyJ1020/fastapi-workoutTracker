@@ -84,14 +84,14 @@ def initialize_workout_routine(db: Session, user_id: int):
         return {"error": f"user_id {user_id} 不存在"}
 
     routines = [
-        {"part": "Glute1", "content": "Bulgarian Split Squats", "is_completed": False},
-        {"part": "Glute1", "content": "Dumbbell RDLs", "is_completed": False},
-        {"part": "Glute2", "content": "Lunges", "is_completed": False},
-        {"part": "Glute2", "content": "Hip Thrust", "is_completed": False},
-        {"part": "Chest", "content": "Push-ups", "is_completed": False},
-        {"part": "Chest", "content": "Bench Press", "is_completed": False},
-        {"part": "Back", "content": "Lat Pulldown", "is_completed": False},
-        {"part": "Back", "content": "Pull-Ups", "is_completed": False},
+        {"part": "Glute1", "content": "Bulgarian Split Squats", "is_completed": False, "user_id": user_id},
+        {"part": "Glute1", "content": "Dumbbell RDLs", "is_completed": False, "user_id": user_id},
+        {"part": "Glute2", "content": "Lunges", "is_completed": False, "user_id": user_id},
+        {"part": "Glute2", "content": "Hip Thrust", "is_completed": False, "user_id": user_id},
+        {"part": "Chest", "content": "Push-ups", "is_completed": False, "user_id": user_id},
+        {"part": "Chest", "content": "Bench Press", "is_completed": False, "user_id": user_id},
+        {"part": "Back", "content": "Lat Pulldown", "is_completed": False, "user_id": user_id},
+        {"part": "Back", "content": "Pull-Ups", "is_completed": False, "user_id": user_id},
     ]
 
     for routine in routines:
