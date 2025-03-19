@@ -79,14 +79,14 @@ def initialize_workout_routine(db: Session, user_id: int):
     初始化指定用戶的預設 Workout Routine
     """
     routines = [
-        {"part": "Glute1", "content": "Bulgarian Split Squats", "isCompleted": False},
-        {"part": "Glute1", "content": "Dumbbell RDLs", "isCompleted": False},
-        {"part": "Glute2", "content": "Lunges", "isCompleted": False},
-        {"part": "Glute2", "content": "Hip Thrust", "isCompleted": False},
-        {"part": "Chest", "content": "Push-ups", "isCompleted": False},
-        {"part": "Chest", "content": "Bench Press", "isCompleted": False},
-        {"part": "Back", "content": "Lat Pulldown", "isCompleted": False},
-        {"part": "Back", "content": "Pull-Ups", "isCompleted": False},
+        {"part": "Glute1", "content": "Bulgarian Split Squats", "is_completed": False},
+        {"part": "Glute1", "content": "Dumbbell RDLs", "is_completed": False},
+        {"part": "Glute2", "content": "Lunges", "is_completed": False},
+        {"part": "Glute2", "content": "Hip Thrust", "is_completed": False},
+        {"part": "Chest", "content": "Push-ups", "is_completed": False},
+        {"part": "Chest", "content": "Bench Press", "is_completed": False},
+        {"part": "Back", "content": "Lat Pulldown", "is_completed": False},
+        {"part": "Back", "content": "Pull-Ups", "is_completed": False},
     ]
 
     for routine in routines:
