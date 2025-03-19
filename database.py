@@ -51,6 +51,9 @@ def add_user_with_routine(username: str, password: str, db: Session):
         db.commit()
         db.refresh(new_user)  # 獲取新用戶的 user_id
 
+       # **✅ 在此初始化 Workout Routine**
+        initialize_workout_routine(db, new_user.id)
+
         # 如果存在 testuser 的記錄，將其 user_id 更新為新用戶的 user_id
         replace_testuser_routines(db, old_user_id=1, new_user_id=new_user.id)
 
