@@ -51,9 +51,6 @@ def add_user_with_routine(username: str, password: str, db: Session):
         db.commit()
         db.refresh(new_user)  # 獲取新用戶的 user_id
 
-       # **✅ 在此初始化 Workout Routine**
-        initialize_workout_routine(db, new_user.id)
-
         # 如果存在 testuser 的記錄，將其 user_id 更新為新用戶的 user_id
         replace_testuser_routines(db, old_user_id=1, new_user_id=new_user.id)
 
@@ -78,6 +75,14 @@ def initialize_workout_routine(db: Session, user_id: int):
     """
     初始化指定用戶的預設 Workout Routine
     """
+    print(f"🔍 正在初始化 user_id: {user_id} 的 Workout Routine")
+
+    # 確保 user_id 存在
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        print(f"❌ user_id {user_id} 不存在於 users 表")
+        return {"error": f"user_id {user_id} 不存在"}
+
     routines = [
         {"part": "Glute1", "content": "Bulgarian Split Squats", "is_completed": False},
         {"part": "Glute1", "content": "Dumbbell RDLs", "is_completed": False},
@@ -91,10 +96,12 @@ def initialize_workout_routine(db: Session, user_id: int):
 
     for routine in routines:
         routine["user_id"] = user_id
+        print(f"✅ 插入 todo: {routine}")  # 🔍 Debug
         db.add(TodoItem(**routine))
-    
+
     db.commit()
-    print(f"Workout routines initialized for user_id: {user_id}")
+    print(f"🎉 成功初始化 user_id: {user_id} 的 Workout Routine")
+
 
 def seed_database():
     """

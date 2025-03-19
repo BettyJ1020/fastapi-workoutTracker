@@ -88,7 +88,7 @@ def create_todo(todo: TodoCreate, db: Session = Depends(get_db)):
         user_id=todo.user_id,
         part=todo.part,
         content=todo.content,
-        is_completed=todo.is_completed  # ✅ 修正變數名稱
+        is_completed=todo.is_completed 
     )
     db.add(new_todo)
     db.commit()
